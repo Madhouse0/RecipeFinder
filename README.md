@@ -33,7 +33,10 @@ A modern React web app that helps you find possible dishes based on the ingredie
    # or
    yarn install
    ```
-3. Ensure the `src/full_format_recipes.json` file is present. This file contains all recipe data used by the app.
+3. **Recipe Database Not Included:**
+   The main recipe database file (`src/full_format_recipes.json`) is **not included** in this repository due to size and/or licensing restrictions.
+   - You must provide your own `full_format_recipes.json` file in the `src/` directory for the app to work.
+   - See the [Database Format](#database-format) section below for details.
 
 4. Start the development server:
    ```bash
@@ -49,20 +52,32 @@ A modern React web app that helps you find possible dishes based on the ingredie
 - Click a dish card to view recipe details in a popup.
 - Remove ingredients by clicking the × on a chip.
 
-## Environment Variables
-- `REACT_APP_SPOONACULAR_API_KEY` – Your Spoonacular API key.
+## Database Format
+- The app expects a file named `full_format_recipes.json` in the `src/` directory.
+- This file should be an array of recipe objects, each with at least the following fields:
+  - `title` (string): The name of the recipe
+  - `ingredients` (array of strings): List of ingredients
+  - `instructions` (array of strings): Step-by-step instructions
+  - `image` (string, optional): URL or path to an image
+- Example entry:
+  ```json
+  {
+    "title": "Lentil Soup",
+    "ingredients": ["Lentils", "Carrots", "Onion", "Celery", "Spices"],
+    "instructions": ["Chop vegetables.", "Simmer with lentils.", "Serve hot."]
+  }
+  ```
+- You can use your own dataset, or export/download a compatible one from a recipe API or open data source.
 
 ## Tech Stack
 - React
 - CSS (custom, no frameworks)
-- Spoonacular API
 
 ## Credits
-- Spoonacular for the recipe data and API.
 - [Create React App](https://github.com/facebook/create-react-app) for the project setup.
 
 ## License
-This project is for educational/demo purposes. Check API provider terms for commercial use.
+This project is for educational/demo purposes. Check your data source's terms for commercial use.
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
